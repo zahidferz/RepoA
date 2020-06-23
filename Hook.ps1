@@ -1,7 +1,7 @@
 $id=$env:id
 $token=$env:token
 $stage=$env:stage
-$sysid:$env:sysid
+$sysid=$env:sysid
 $header = @{authorization = "Bearer $token"}
 $Body = Get-Content ./slack.json | ConvertFrom-Json
 $Body.blocks.text.text = "<https://dev.azure.com/gestionix-boa/$sysid/_build/results?buildId=$id&branchName=master| $stage>"
