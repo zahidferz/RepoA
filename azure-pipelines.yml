@@ -35,5 +35,6 @@ stages:
     steps:
     - powershell: |
         $header = @{authorization = "Bearer $(token)"}
-        Body = Get-Content $PSScriptRoot/slack.json | ConvertFrom-Json
+        $Body = Get-Content $PSScriptRoot/slack.json | ConvertFrom-Json
+
         Invoke-RestMethod -Uri "https://eleva-inc.slack.com/api/chat.postMessage"  -Method Post -ContentType "application/json" -Headers $header -Body 
