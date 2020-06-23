@@ -1,0 +1,12 @@
+{
+	"channel": "C015EDFMP4P",
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "<https://google.com|this is a link>"
+			}
+		}
+	]
+}
