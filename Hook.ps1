@@ -5,6 +5,7 @@ $projectid=$env:projectid
 $versionid=$env:versionid
 $webappName=$env:webappName
 
+Write-Output $versionid
 $header = @{authorization = "Bearer $token"}
 $Body = Get-Content ./SuccededDeploy.json | ConvertFrom-Json
 $Section1=($Body.attachments.blocks | where-object block_id -eq section1).text.text -creplace "projectid", $projectid -creplace "buildid", $buildid -creplace "enviroment", $stage
