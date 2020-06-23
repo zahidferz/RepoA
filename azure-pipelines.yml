@@ -1,14 +1,3 @@
-# Docker image.
-# Build a Docker image to deploy, run, or push to a container registry.
-# Add steps that use Docker Compose, tag images, push to a registry, run an image, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
-name: $(SourceBranchName)
-pool:
-  vmImage: 'Ubuntu-16.04'
-variables:
-- group: Settings
-
 stages:
 - stage: Build
   displayName: Build
@@ -33,6 +22,14 @@ stages:
       buildIncrement: $[counter(variables['appVersion'], 0)] # create a counter that is used to increment build run for same app version
       buildRevision: "r$(buildIncrement)"
       buildVersion: "$(appVersion)"
+
+    steps:
+    - bash: echo "##vso[build.updatebuildnumber]$(buildVersion)" # Update build number in Pipeline UI
+      displayName: Update build number
+
+    - bash: echo "##vso[build.updatebuildnumber]$(buildVersion)-$(buildRevision)" # Update build number in Pipeline UI
+      displayName: Update build revison
+      condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/dev', 'refs/heads/develop'))
 
 - stage: "test" 
   jobs:
