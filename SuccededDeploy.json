@@ -1,0 +1,35 @@
+{
+	"channel": "C015EDFMP4P",
+	"attachments": [
+		{
+			"color": "#49FF33",
+			"blocks": [
+				{
+					"type": "section",
+					"block_id": "section1",
+					"text": {
+						"type": "mrkdwn",
+						"text": "Deployment on stage <https://dev.azure.com/eleva-inc/projectid/_build/results?buildId=buildid&branchName=master| enviroment > succeded"
+					}
+				},
+				{
+					"type": "section",
+					"block_id": "section2",
+					"text": {
+						"type": "mrkdwn",
+						"text": "Version <https://dev.azure.com/eleva-inc/projectid/_build/results?buildId=buildid&branchName=master|ID>\t\t\t\t\tPipeline <https://dev.azure.com/eleva-inc/projectid/_build/results?buildId=buildid&branchName=master|Webapp>"
+					}
+				},
+				{
+					"type": "section",
+					"block_id": "section3",
+					"text": {
+						"type": "mrkdwn",
+						"text": "*Commit:* $committ \n *Date*: $date "
+					}
+				}
+			]
+		}
+	]
+}
+

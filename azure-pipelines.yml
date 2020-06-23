@@ -6,17 +6,33 @@
 name: Test
 pool:
   vmImage: 'Ubuntu-16.04'
-
 variables:
 - group: Settings
 
 stages:
-- stage: "dev" 
-  jobs:
+- stage: Build
+  displayName: Build
 
-  - job: B
+  jobs:
+  - job: GetVersion
+    displayName: Get Version
+    variables:
+      repo: $(Build.Repository.Name)
     steps:
-    - bash: echo "Hello From B on dev"
+    - bash: |
+        VERSIONT=$(jq -r .version package.json)
+        echo "##vso[task.setvariable variable=version;isOutput=true]$VERSIONT"
+        REPOT=$(echo ${repo##*/})
+        echo "##vso[task.setvariable variable=webApp;isOutput=true]$REPOT"
+      name: App 
+  - job: Build
+    displayName: Build 
+    dependsOn: GetVersion
+    variables:
+      appVersion: $[ dependencies.GetVersion.outputs['App.version'] ]
+      buildIncrement: $[counter(variables['appVersion'], 0)] # create a counter that is used to increment build run for same app version
+      buildRevision: "r$(buildIncrement)"
+      buildVersion: "$(appVersion)"
 
 - stage: "test" 
   jobs:
@@ -29,10 +45,12 @@ stages:
     - task: PowerShell@2
       env: 
         token: $(token)
-        id : $(Build.BuildId)
+        buildid : $(Build.BuildId)
         dir: $(System.DefaultWorkingDirectory)
         stage: $(System.StageName)
-        sysid: $(System.TeamProjectId)
+        projectid: $(System.TeamProjectId)
+        versionid: $(Build.BuildNumber)
+        webappName: $(Build.DefinitionName)
       inputs:
         filePath: 'Hook.ps1'
 
