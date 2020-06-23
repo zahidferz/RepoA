@@ -26,9 +26,10 @@ stages:
 
   - job: B
     steps:
-    - task: PowerShell@2
-      inputs:
-        filePath: 'Hook.ps1'
-        arguments: 'id $(System.DefinitionId)'
+    - powershell: |
+        Invoke-Expression "Hook.ps1 -id $(System.DefinitionId) -toke $(token)"
+
+
+      
 
     
