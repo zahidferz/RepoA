@@ -1,4 +1,3 @@
-param ($id, $token)
 write-output $id
 $header = @{authorization = "Bearer $token"}
 $Body = Get-Content $(System.DefaultWorkingDirectory)/slack.json | ConvertFrom-Json
