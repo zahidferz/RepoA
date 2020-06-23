@@ -1,3 +1,5 @@
+param ($id)
+write-output $id
 $header = @{authorization = "Bearer $(token)"}
 $Body = Get-Content $(System.DefaultWorkingDirectory)/slack.json | ConvertFrom-Json
 $Body.blocks.text.text = <https://dev.azure.com/gestionix-boa/gx-sandbox-pipeline/latest?definitionId=208&branchName=develop|this is a link>
