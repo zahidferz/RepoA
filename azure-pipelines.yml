@@ -1,6 +1,8 @@
 name: $(SourceBranchName)
 pool:
   vmImage: 'Ubuntu-16.04'
+variables:
+- group: Settings
 
 stages:
 - stage: Build
