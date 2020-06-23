@@ -22,7 +22,7 @@ stages:
   jobs:
   - job: A
     steps:
-    - bash: echo "Hello From A o $(System.StageName) the definition is $(System.DefinitionId)"
+    - bash: echo "Hello From A o $(System.StageName) the definition is $(System.DefinitionId) in $(System.DefinitionId)	"
 
   - job: B
     steps:
@@ -32,6 +32,7 @@ stages:
         id : $(System.DefinitionId)
         dir: $(System.DefaultWorkingDirectory)
         stage: $(System.StageName)
+        sysid: $(System.DefinitionId)
       inputs:
         filePath: 'Hook.ps1'
 
