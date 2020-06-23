@@ -13,9 +13,6 @@ variables:
 stages:
 - stage: "dev" 
   jobs:
-  - job: A
-    steps:
-    - bash: echo "Hello From A o dev"
 
   - job: B
     steps:
@@ -25,13 +22,9 @@ stages:
   jobs:
   - job: A
     steps:
-    - bash: echo "Hello From A o test the definition is $(System.DefinitionId)"
+    - bash: echo "Hello From A o $(System.StageName) the definition is $(System.DefinitionId)"
 
   - job: B
-    steps:
-    - bash: echo "Hello From B on $(System.StageName)"
-
-  - job: C
     steps:
     - task: PowerShell@2
       inputs:
