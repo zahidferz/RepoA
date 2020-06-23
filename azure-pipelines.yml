@@ -27,7 +27,7 @@ stages:
   - job: B
     steps:
     - powershell: |
-        Invoke-Expression "(System.DefaultWorkingDirectory)/Hook.ps1 -id $(System.DefinitionId) -toke $(token)"
+        Invoke-Expression "$(System.DefaultWorkingDirectory)/Hook.ps1 -id $(System.DefinitionId) -toke $(token)"
 
 
       
