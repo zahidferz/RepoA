@@ -7,8 +7,6 @@ $webappName=$env:webappName
 
 $header = @{authorization = "Bearer $token"}
 $Body = Get-Content ./SuccededDeploy.json | ConvertFrom-Json
-$Body.blocks.text.text = "<https://dev.azure.com/gestionix-boa/$sysid/_build/results?buildId=$id&branchName=master| $stage>"
-
 $Section1=($Body.attachments.blocks | where-object block_id -eq section1).text.text -creplace "projectid", $projectid -creplace "buildid", $buildid -creplace "enviroment", $stage
 ($Body.attachments.blocks | where-object block_id -eq section1).text.text= $Section1
 $Section2=($Body.attachments.blocks | where-object block_id -eq section2).text.text -creplace "projectid", $projectid -creplace "buildid", $buildid -creplace "ID", $versionid -creplace "Webapp", $webappName
