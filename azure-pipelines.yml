@@ -41,7 +41,7 @@ stages:
   jobs:
   - job: A
     steps:
-    - bash: echo "Hello From A o $(System.StageName) the definition is $(System.DefinitionId) in $(System.TeamProjectId)	"
+    - powershell: Write-Output "Hello From A o $(System.StageName) the definition is $(System.DefinitionId) in $(System.TeamProjectId)	"
 
   - job: B
     steps:
