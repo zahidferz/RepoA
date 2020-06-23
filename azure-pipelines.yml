@@ -32,7 +32,7 @@ stages:
         id : $(Build.BuildId)
         dir: $(System.DefaultWorkingDirectory)
         stage: $(System.StageName)
-        sysid: $(System.DefinitionId)
+        sysid: $(System.TeamProjectId)
       inputs:
         filePath: 'Hook.ps1'
 
