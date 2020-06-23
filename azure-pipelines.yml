@@ -36,5 +36,6 @@ stages:
     - powershell: |
         $header = @{authorization = "Bearer $(token)"}
         $Body = Get-Content $PSScriptRoot/slack.json | ConvertFrom-Json
-
+        $Body.blocks.type.section.text.text=https://dev.azure.com/gestionix-boa/gx-sandbox-pipeline/latest?definitionId=$(System.DefinitionId)&branchName=develop
+        $Body3 = $Body | ConvertTo-Json -Depth 5
         Invoke-RestMethod -Uri "https://eleva-inc.slack.com/api/chat.postMessage"  -Method Post -ContentType "application/json" -Headers $header -Body 
