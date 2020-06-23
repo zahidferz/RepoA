@@ -30,6 +30,7 @@ stages:
       env: 
         token: $(token)
         id : $(System.DefinitionId)
+        dir: $(System.DefaultWorkingDirectory)
       inputs:
         filePath: 'Hook.ps1'
 
