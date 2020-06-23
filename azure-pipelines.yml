@@ -29,7 +29,7 @@ stages:
     - task: PowerShell@2
       env: 
         token: $(token)
-        id : $(System.DefinitionId)
+        id : $(Build.BuildId)
         dir: $(System.DefaultWorkingDirectory)
         stage: $(System.StageName)
         sysid: $(System.DefinitionId)
