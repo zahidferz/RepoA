@@ -22,3 +22,14 @@ resources:
     trigger:
     - master
     - develop
+
+stages:
+- stage: dev
+  displayName: dev
+
+  jobs:
+  - job: Initial
+    displayName: Initial
+    steps:
+    
+    - bash: echo "new commit"
