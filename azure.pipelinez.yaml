@@ -8,6 +8,7 @@ resources:
   - repository: RepoB
     type: github
     name: zahidferz/RepoB
+    endpoint: zahidferz
     ref: master
     trigger:
     - master
@@ -16,6 +17,7 @@ resources:
   - repository: RepoC
     type: github
     name: zahidferz/RepoC
+    endpoint: zahidferz
     ref: master
     trigger:
     - master
