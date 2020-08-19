@@ -1,0 +1,23 @@
+
+trigger:
+- master
+- develop
+
+resources:
+  repositories:
+  - repository: RepoB
+    type: github
+    name: zahidferz/RepoB
+    ref: master
+    trigger:
+    - master
+    - develop
+ 
+
+  - repository: RepoB
+    type: github
+    name: zahidferz/RepoC
+    ref: master
+    trigger:
+    - master
+    - develop
