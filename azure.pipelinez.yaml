@@ -13,8 +13,7 @@ resources:
     - master
     - develop
  
-
-  - repository: RepoB
+  - repository: RepoC
     type: github
     name: zahidferz/RepoC
     ref: master
