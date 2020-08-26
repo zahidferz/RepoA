@@ -31,4 +31,4 @@ stages:
     displayName: Initial
     steps:
     
-    - bash: echo "new commit"
+    - bash: echo $(System.CollectionId)
