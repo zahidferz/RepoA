@@ -30,6 +30,12 @@ stages:
   - job: Initial
     displayName: Initial
     steps:
-    - task: Npm@1
+
+    - script: |
+        ls
+        pwd
+
+    - task: PowerShell@2
       inputs:
-        command: 'install'
+        targetType: 'inline'
+        script: 'npm -version'
