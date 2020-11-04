@@ -31,7 +31,7 @@ stages:
     displayName: Initial
     steps:
 
-    - script: |
+    - pwsh: |
         ls
         pwd
 
