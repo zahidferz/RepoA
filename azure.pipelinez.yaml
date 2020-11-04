@@ -30,6 +30,10 @@ stages:
   - job: Initial
     displayName: Initial
     steps:
+    
+    - checkout: self
+    - checkout: RepoB
+    - checkout: RepoC
 
     - task: PowerShell@2
       inputs:
