@@ -45,10 +45,9 @@ stages:
 
   - job: B
     steps:
-    - pwsh: Write-Error -Message "bad"
     - task: PowerShell@2
       env: 
-        token: $(SlackToken)
+        token: $(token)
         buildid : $(Build.BuildId)
         dir: $(System.DefaultWorkingDirectory)
         stage: $(System.StageName)
@@ -57,11 +56,6 @@ stages:
         webappName: $(Build.DefinitionName)
       inputs:
         filePath: 'Hook.ps1'
-
-    - powershell: |
-        echo "##vso[task.setvariable variable=state;isOutput=true]$(System.StageName)"
-      name: Status
-      condition: always()
 
 
 
