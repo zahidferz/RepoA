@@ -37,6 +37,7 @@ stages:
           echo "$DefinitionName"
           echo "DefinitionId:"
           echo "$DefinitionId"
+        workingDirectory: $(Agent.BuildDirectory)/self/$(PathApi)          
       env:
         BuildId: $(Build.TriggeredBy.BuildId)
         DefinitionName: $(Build.TriggeredBy.DefinitionName)
