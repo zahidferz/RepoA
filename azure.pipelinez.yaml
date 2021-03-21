@@ -27,6 +27,9 @@ stages:
   - job: triggering
     displayName: triggering
     steps:
+    - bash: |
+        echo "$(Build.Reason)"
+      name: echo
     - download: RepoB
       artifact: README
     - bash: |
