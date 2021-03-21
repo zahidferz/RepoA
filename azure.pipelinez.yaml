@@ -36,7 +36,7 @@ stages:
           echo "DefinitionName:"
           echo "$(Build.TriggeredBy.DefinitionName)"
           echo "SourceBranchName:"
-          echo "$buildef"
+          echo "$(Build.SourceBranchName)"
         workingDirectory: $(Agent.BuildDirectory)         
       env:
         buildef: $(Build.SourceBranchName)
