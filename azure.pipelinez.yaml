@@ -12,6 +12,15 @@ resources:
     trigger:
     - master
     - develop
+    
+  pipelines:
+  - pipeline: RepoB   # Name of the pipeline resource
+    source: RepoB # Name of the pipeline referenced by the pipeline resource
+    trigger: 
+      branches:
+      - develop
+      - staging
+      - master
  
   - repository: RepoC
     type: github
