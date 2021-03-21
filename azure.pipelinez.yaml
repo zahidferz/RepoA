@@ -28,7 +28,7 @@ stages:
     displayName: triggering
     steps:
     - bash: |
-        echo "$(Build.Reason)"
+        echo "$(Build.SourceVersionMessage)"
       name: echo
     - download: RepoB
       artifact: README
