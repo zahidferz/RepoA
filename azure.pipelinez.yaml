@@ -27,7 +27,10 @@ stages:
   - job: triggering
     displayName: triggering
     steps:
-    - checkout: none
+    - download: RepoB
+      artifact: README
     - bash: |
         echo "Trigger from repo $(Build.Repository.Uri) on branch $(Build.SourceBranchName). \n Go to the Repos project: \n https://dev.azure.com/eleva-inc/ERR/_build?definitionId=186"
+        cat README.md
       name: App 
+      
