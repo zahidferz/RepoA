@@ -34,12 +34,12 @@ stages:
         script: |
 
           echo "DefinitionName:"
-          echo "${{ variables.Build.SourceBranchName }}"
+          echo "$buildef"
           echo "SourceBranchName:"
           echo "$(Build.SourceBranchName)"
         workingDirectory: $(Agent.BuildDirectory)         
       env:
-        buildef: $(Build.TriggeredBy.DefinitionName)
+        buildef: ${{ variables.Build.SourceBranchName }}
 
     - download: RepoB
       artifact: README
