@@ -28,7 +28,9 @@ stages:
     displayName: triggering
     steps:
     - bash: |
-        echo "$(Build.SourceVersionMessage)"
+        echo "BuildId: $(Build.TriggeredBy.BuildId)"
+        echo "DefinitionName: $(Build.TriggeredBy.DefinitionName)"
+        echo "DefinitionId: $(Build.TriggeredBy.DefinitionId)"
       name: echo
     - download: RepoB
       artifact: README
