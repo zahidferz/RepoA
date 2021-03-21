@@ -34,7 +34,7 @@ stages:
         script: |
 
           echo "DefinitionName:"
-          echo "$DefinitionName"
+          echo "echo ${{ variables.Build.SourceBranchName }}"
           echo "SourceBranchName:"
           echo "$(Build.SourceBranchName)"
         workingDirectory: $(Agent.BuildDirectory)         
