@@ -27,14 +27,21 @@ stages:
   - job: triggering
     displayName: triggering
     steps:
-    - bash: |
-        echo "BuildId:" 
-        echo "$(Build.TriggeredBy.BuildId)"
-        echo "DefinitionName:"
-        echo "$(Build.TriggeredBy.DefinitionName)"
-        echo "DefinitionId:"
-        echo "$(Build.TriggeredBy.DefinitionId)"
-      name: echo
+
+    - task: Bash@3 
+      inputs:
+        script: |
+          echo "BuildId:" 
+          echo "$BuildId"
+          echo "DefinitionName:"
+          echo "$DefinitionName"
+          echo "DefinitionId:"
+          echo "$DefinitionId"
+      env:
+        BuildId: $(Build.TriggeredBy.BuildId)
+        DefinitionName: $(Build.TriggeredBy.DefinitionName)
+        DefinitionId: $(Build.TriggeredBy.DefinitionId)
+
     - download: RepoB
       artifact: README
     - bash: |
