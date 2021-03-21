@@ -32,14 +32,11 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-
           echo "DefinitionName:"
           echo "$buildef"
-          echo "SourceBranchName:"
-          echo "$(Build.SourceBranchName)"
         workingDirectory: $(Agent.BuildDirectory)         
       env:
-        buildef: ${{ variables.Build.SourceBranchName }}
+        buildef: $(resources.pipeline.RepoB.pipelineName)
 
     - download: RepoB
       artifact: README
