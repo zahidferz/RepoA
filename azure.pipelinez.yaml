@@ -3,16 +3,7 @@ trigger:
 - master
 - develop
 
-resources:
-  repositories:
-  - repository: RepoB
-    type: github
-    name: zahidferz/RepoB
-    ref: master
-    trigger:
-    - master
-    - develop
-    
+resources:    
   pipelines:
   - pipeline: RepoB   # Name of the pipeline resource
     source: RepoB # Name of the pipeline referenced by the pipeline resource
@@ -22,10 +13,4 @@ resources:
       - staging
       - master
  
-  - repository: RepoC
-    type: github
-    name: zahidferz/RepoC
-    ref: master
-    trigger:
-    - master
-    - develop
+
