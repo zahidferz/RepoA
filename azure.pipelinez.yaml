@@ -9,13 +9,14 @@ trigger:
 resources:
   repositories:
     - repository: RepoB
-      type: git
+      type: github
       name: zahidferz/RepoB
       ref: master
       trigger:
         branches:
           include:
             - master
+            - develop
 #
 #trigger:
 #- master
