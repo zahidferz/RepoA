@@ -1,7 +1,12 @@
 
+name: $(SourceBranchName)
+pool:
+  vmImage: 'Ubuntu-16.04'
+
 trigger:
 - master
 - develop
+
 
 resources:    
   pipelines:
