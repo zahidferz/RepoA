@@ -1,0 +1,27 @@
+{
+	"channel": "C015EDFMP4P",
+	"attachments": [
+		{
+			"color": "#49FF33",
+			"blocks": [
+				{
+					"type": "section",
+					"block_id": "section1",
+					"text": {
+						"type": "mrkdwn",
+						"text": "Deployment on stage <https://dev.azure.com/gestionix-boa/projectid/_build/results?buildId=buildid&branchName=master| enviroment > succeded"
+					}
+				},
+				{
+					"type": "section",
+					"block_id": "section2",
+					"text": {
+						"type": "mrkdwn",
+						"text": "*Version* <https://dev.azure.com/gestionix-boa/projectid/_build/results?buildId=buildid&branchName=master| versionid >\n *Pipeline* <https://dev.azure.com/gestionix-boa/projectid/_build/results?buildId=buildid&branchName=master|Webapp>"
+					}
+				}
+			]
+		}
+	]
+}
+

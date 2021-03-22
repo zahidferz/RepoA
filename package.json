@@ -1,0 +1,72 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "Error Translator Micro service",
+  "main": "app.js",
+  "scripts": {
+    "clean": "rm -rf build && rm -rf test_results && mkdir build",
+    "babel-transpile": "babel -d ./build . -s --ignore node_modules",
+    "copy-tests-resources": "find tests ! -name '*.js' -type f -exec cp '{}' build/'{}' ';'",
+    "copy-migration-files": "cp -R db/ build/db",
+    "build": "npm run clean && npm run babel-transpile && npm run copy-migration-files && npm run copy-tests-resources",
+    "start": "node app.js",
+    "cluster": "node cluster.js",
+    "dev": "nodemon app.js --exec babel-node",
+    "windowsDebug": "@powershell -Command $env:DEBUG='login,errors-translator'; nodemon app.js --exec babel-node",
+    "linuxDebug": "export DEBUG=express:*,mssql:tedi,login,errors-translator && nodemon app.js --exec babel-node",
+    "test": "jest --detectOpenHandles --runInBand --config ./tests/jest.config.default.json",
+    "unit-tests": "jest --ci --detectOpenHandles --runInBand --forceExit --config ./tests/jest.config.unit.json",
+    "integration-tests": "jest --ci --detectOpenHandles --runInBand --forceExit --config ./tests/jest.config.integration.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gestionix/gx-boa-ms-errors-translator.git"
+  },
+  "keywords": [
+    "micro",
+    "service",
+    "errors-translator"
+  ],
+  "author": "Brenda SR",
+  "license": "ISC",
+  "homepage": "https://github.com/gestionix/gx-boa-ms-errors-translator#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "applicationinsights": "^1.6.0",
+    "axios": "^0.19.2",
+    "azure-storage": "^2.10.3",
+    "body-parser": "^1.18.3",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "jest-junit": "^6.4.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "lodash.findkey": "^4.6.0",
+    "lodash.foreach": "^4.5.0",
+    "mssql": "^6.0.1",
+    "newrelic": "^6.2.0",
+    "node-cache": "^5.1.0",
+    "node-fetch": "^2.6.0",
+    "swagger-jsdoc": "^3.5.0",
+    "swagger-ui-express": "^4.1.2",
+    "tedious": "^8.0.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "dotenv": "^6.2.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^24.9.0",
+    "jest-chain": "^1.1.2",
+    "nodemon": "^1.19.4",
+    "peer": "^0.2.10"
+  }
+}
