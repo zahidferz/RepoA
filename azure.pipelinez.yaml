@@ -5,6 +5,7 @@ pool:
 
 trigger:
   - master
+  - develop
 
 resources:
   repositories:
